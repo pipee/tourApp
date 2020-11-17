@@ -28,4 +28,19 @@ public class Idioma {
     public void setNombreIdioma(String nombreIdioma) {
         this.nombreIdioma = nombreIdioma;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Idioma idioma = (Idioma) o;
+
+        return getIdIdioma() != null ? getIdIdioma().equals(idioma.getIdIdioma()) : idioma.getIdIdioma() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getIdIdioma() != null ? getIdIdioma().hashCode() : 0;
+    }
 }
