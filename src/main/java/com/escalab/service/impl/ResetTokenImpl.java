@@ -4,7 +4,9 @@ import com.escalab.model.ResetToken;
 import com.escalab.repo.IResetTokenRepo;
 import com.escalab.service.IResetTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ResetTokenImpl implements IResetTokenService {
 
     @Autowired

@@ -4,10 +4,12 @@ import com.escalab.model.Reserva;
 import com.escalab.repo.IReservaRepo;
 import com.escalab.service.IReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ReservaServiceImpl implements IReservaService {
 
     @Autowired

@@ -1,13 +1,16 @@
 package com.escalab.service.impl;
 
+import com.escalab.dto.FiltroDTO;
 import com.escalab.model.Guia;
 import com.escalab.repo.IGuiaRepo;
 import com.escalab.service.IGuiaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class GuiaServiceImpl implements IGuiaService {
 
     @Autowired
@@ -41,7 +44,7 @@ public class GuiaServiceImpl implements IGuiaService {
     }
 
     @Override
-    public Guia buscarGuiaPorNombre(String nombre) {
-        return repo.buscarPorNombreGuia(nombre);
+    public List<Guia> buscarGuiaPorNombre(FiltroDTO filtro) {
+        return repo.buscarPorNombreGuia(filtro.getNombreCompleto());
     }
 }

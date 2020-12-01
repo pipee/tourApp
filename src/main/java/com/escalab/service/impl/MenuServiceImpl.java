@@ -4,11 +4,13 @@ import com.escalab.model.Menu;
 import com.escalab.repo.IMenuRepo;
 import com.escalab.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MenuServiceImpl implements IMenuService {
 
     @Autowired

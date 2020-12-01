@@ -1,13 +1,16 @@
 package com.escalab.service.impl;
 
+import com.escalab.dto.FiltroDTO;
 import com.escalab.model.Cliente;
 import com.escalab.repo.IClienteRepo;
 import com.escalab.service.IClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ClienteServiceImpl implements IClienteService {
 
     @Autowired
@@ -42,7 +45,7 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
-    public Cliente buscarPorNombreCliente(String nombre) {
-        return repo.buscarPorNombreCliente(nombre);
+    public List<Cliente> buscarPorNombreCliente(FiltroDTO filtro) {
+        return repo.buscarPorNombreCliente(filtro.getNombreCompleto());
     }
 }

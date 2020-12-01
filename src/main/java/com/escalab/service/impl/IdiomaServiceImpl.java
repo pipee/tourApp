@@ -4,10 +4,12 @@ import com.escalab.model.Idioma;
 import com.escalab.repo.IIdiomaRepo;
 import com.escalab.service.IIdiomaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class IdiomaServiceImpl implements IIdiomaService {
 
     @Autowired
