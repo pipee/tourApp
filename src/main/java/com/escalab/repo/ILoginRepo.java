@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface ILoginRepo extends JpaRepository<Usuario, Integer> {
 
-    @Query("FROM Usuario u where us.username = :username")
+    @Query("FROM Usuario u where u.username = :username")
     Usuario validarUsername(@Param("username") String username) throws Exception;
 
     @Modifying
