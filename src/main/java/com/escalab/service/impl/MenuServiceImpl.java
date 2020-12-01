@@ -5,6 +5,7 @@ import com.escalab.repo.IMenuRepo;
 import com.escalab.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,5 +39,21 @@ public class MenuServiceImpl implements IMenuService {
     public boolean eliminar(Integer id) {
         repo.deleteById(id);
         return true;
+    }
+
+    @Override
+    public List<Menu> listarMenuPorUsuario(String nombre) {
+
+        List<Menu> menuList = new ArrayList<>();
+        repo.listarMenuPorUsuario(nombre).forEach(obj -> {
+            Menu mn = new Menu();
+            mn.setIdMenu(Integer.parseInt(String.valueOf(obj[0])));
+            mn.setIcono(String.valueOf(obj[1]));
+            mn.setNombre(String.valueOf(obj[2]));
+            mn.setUrl(String.valueOf(obj[3]));
+
+            menuList.add(mn);
+        });
+        return menuList;
     }
 }
