@@ -1,5 +1,6 @@
 package com.escalab.service.impl;
 
+import com.escalab.dto.FiltroDTO;
 import com.escalab.dto.OfertaIdiomaDTO;
 import com.escalab.model.Idioma;
 import com.escalab.model.OfertaTour;
@@ -51,8 +52,8 @@ public class OfertaTourServiceImpl implements IOfertaTourService {
     }
 
     @Override
-    public List<OfertaTour> listarTourPorNombreGuia(String nombre) {
-        return repo.listarTourPorNombreGuia(nombre);
+    public List<OfertaTour> listarTourPorNombreGuia(FiltroDTO filtroDTO) {
+        return repo.listarTourPorNombreGuia(filtroDTO.getNombreCompleto());
     }
 
     @Override
