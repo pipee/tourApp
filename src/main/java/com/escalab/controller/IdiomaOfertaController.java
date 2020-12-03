@@ -4,6 +4,7 @@ import com.escalab.exception.ModelNotFoundException;
 import com.escalab.model.Idioma;
 import com.escalab.model.OfertaTieneIdioma;
 import com.escalab.service.IOfertaTieneIdiomaService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class IdiomaOfertaController {
     @Autowired
     private IOfertaTieneIdiomaService service;
 
+    @ApiOperation(value = "Listar oferta con idiomas")
     @GetMapping(value = "/{idOferta}")
     public ResponseEntity<List<OfertaTieneIdioma>> listar(@PathVariable("idOferta") Integer idOferta) {
         List<OfertaTieneIdioma> ofertaTieneIdiomas = new ArrayList<>();
@@ -29,6 +31,7 @@ public class IdiomaOfertaController {
         return new ResponseEntity<List<OfertaTieneIdioma>>(ofertaTieneIdiomas, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Listar idiomas por id oferta")
     @GetMapping(value = "idiomasporoferta/{idOferta}")
     public ResponseEntity<List<Idioma>> listarIdiomas(@PathVariable("idOferta") Integer idOferta) {
         List<Idioma> idiomas = new ArrayList<>();

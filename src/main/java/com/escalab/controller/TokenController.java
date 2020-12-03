@@ -1,5 +1,6 @@
 package com.escalab.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
@@ -16,6 +17,7 @@ public class TokenController {
 	@Autowired
 	private ConsumerTokenServices tokenServices;
 
+	@ApiOperation(value = "Anular Token por id")
 	@GetMapping("/anular/{tokenId:.*}")
 	public void revocarToken(@PathVariable("tokenId") String token) {
 		tokenServices.revokeToken(token);

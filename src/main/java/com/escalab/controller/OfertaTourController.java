@@ -5,6 +5,7 @@ import com.escalab.dto.OfertaIdiomaDTO;
 import com.escalab.exception.ModelNotFoundException;
 import com.escalab.model.OfertaTour;
 import com.escalab.service.IOfertaTourService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +24,14 @@ public class OfertaTourController {
     @Autowired
     private IOfertaTourService service;
 
+    @ApiOperation(value = "Listar Ofertas")
     @GetMapping
     public ResponseEntity<List<OfertaIdiomaDTO>> listar() {
         List<OfertaIdiomaDTO> lista = service.listarTourDetalle();
         return new ResponseEntity<List<OfertaIdiomaDTO>>(lista, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Listar Oferta por id")
     @GetMapping("/{id}")
     public ResponseEntity<OfertaTour> listarPorId(@PathVariable("id") Integer id) {
         OfertaTour obj = service.leerPorId(id);
@@ -38,6 +41,7 @@ public class OfertaTourController {
         return new ResponseEntity<OfertaTour>(obj, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Listar Oferta por id guia")
     @GetMapping("guia/{idguia}")
     public ResponseEntity<List<OfertaTour>> listarPorGuiaId(@PathVariable("idguia") Integer idguia) {
         List<OfertaTour> lista = service.listarTourPorIdGuia(idguia);
@@ -47,6 +51,7 @@ public class OfertaTourController {
         return new ResponseEntity<List<OfertaTour>>(lista, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Listar Oferta por nombre guia")
     @PostMapping("/guia")
     public ResponseEntity<List<OfertaTour>> buscarPorNombre(@RequestBody FiltroDTO filtro) {
         List<OfertaTour> lista = new ArrayList<>();
@@ -57,6 +62,7 @@ public class OfertaTourController {
         return new ResponseEntity<List<OfertaTour>>(lista, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Registrar Oferta")
     @PostMapping
     public ResponseEntity<Object> registrar(@Valid @RequestBody OfertaIdiomaDTO ofertaIdiomaDTO) {
         OfertaTour obj = service.registrarOFerta(ofertaIdiomaDTO);
@@ -64,12 +70,14 @@ public class OfertaTourController {
         return ResponseEntity.created(location).build();
     }
 
+    @ApiOperation(value = "Modificar Oferta")
     @PutMapping
     public ResponseEntity<OfertaTour> modificar(@Valid @RequestBody OfertaTour ofertaTour) {
         OfertaTour obj = service.modificar(ofertaTour);
         return new ResponseEntity<OfertaTour>(obj, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Eliminar Oferta")
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
         OfertaTour obj = service.leerPorId(id);
