@@ -1,6 +1,9 @@
 package com.escalab.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "idioma")
@@ -10,6 +13,8 @@ public class Idioma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idIdioma;
 
+    @ApiModelProperty(notes = "Nombre Idioma debe tener minimo 3 caracteres")
+    @Size(min = 3, message = "Nombre Idioma debe tener minimo 3 caracteres")
     @Column(name = "nombre_idioma")
     private String nombreIdioma;
 
