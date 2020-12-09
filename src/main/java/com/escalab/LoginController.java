@@ -6,6 +6,7 @@ import com.escalab.service.ILoginService;
 import com.escalab.service.IResetTokenService;
 import com.escalab.util.EmailUtil;
 import com.escalab.util.Mail;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,6 +34,7 @@ public class LoginController {
     @Autowired
     private BCryptPasswordEncoder bcrypt;
 
+    @ApiOperation(value = "Envio de correo para reestablecer contraseña")
     @PostMapping(value = "/enviarCorreo", consumes = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<Integer> enviarCorreo(@RequestBody String correo) {
         int rpta = 0;
@@ -65,6 +67,7 @@ public class LoginController {
         return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Verifica token valido para reestablecer")
     @GetMapping(value = "/restablecer/verificar/{token}")
     public ResponseEntity<Integer> restablecerClave(@PathVariable("token") String token) {
         int rpta = 0;
@@ -83,6 +86,7 @@ public class LoginController {
         return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Reestablece contraseña")
     @PostMapping(value = "/restablecer/{token}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Integer> restablecerClave(@PathVariable("token") String token, @RequestBody String clave ) {
         int rpta = 0;
